@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to meiwei api's documentation!
+美味不用等开放接口文档
 ======================================
 
 Contents:

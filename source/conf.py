@@ -46,8 +46,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'meiwei api'
-copyright = u'2015, kenneth'
+project = u'美味不用等开放接口'
+copyright = u'2015, puscene'
 author = u'kenneth'
 
 # The version info for the project you're documenting, acts as replacement for

@@ -1,0 +1,666 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第三方微信公众号接入 &mdash; 美味不用等开放接口 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="美味不用等开放接口 0.1 documentation" href="index.html"/>
+        <link rel="prev" title="美味不用等开放接口文档" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> 美味不用等开放接口
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">第三方微信公众号接入</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">排队商家列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">我的排队</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">推送排队状态变更信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">提供永久二维码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">第三方微信二维码扫码接口</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">美味不用等开放接口</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第三方微信公众号接入</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/weixin.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="id1">
+<h1>第三方微信公众号接入<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>第三方微信公众号(服务号)接入开发接口文档</p>
+<div class="section" id="id2">
+<h2>排队商家列表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>功能说明:  显示授权的排队商家列表</p>
+<p>接口地址:  <a class="reference external" href="http://9now.cn/api/web/weixin/near.php">http://9now.cn/api/web/weixin/near.php</a></p>
+<p>请求方式:  Get</p>
+<p>JSONP:    否</p>
+<p>输入参数</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="10%" />
+<col width="8%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">是否必须</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>String</td>
+<td>【必须】</td>
+<td>授权唯一口令由“美味不用等”分配</td>
+</tr>
+<tr class="row-odd"><td>openid</td>
+<td>String</td>
+<td>【可选】</td>
+<td>接入方的微信openid【注：若需要服务号需支持推送，必须传，否则可空】</td>
+</tr>
+<tr class="row-even"><td>mobile</td>
+<td>Int</td>
+<td>【可选】</td>
+<td>用户手机号</td>
+</tr>
+<tr class="row-odd"><td>latitude</td>
+<td>Float</td>
+<td>【可选】</td>
+<td>用户当前地址位置的纬度</td>
+</tr>
+<tr class="row-even"><td>longitude</td>
+<td>Float</td>
+<td>【可选】</td>
+<td>用户当前地址位置的经度</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>String</td>
+<td>【可选】</td>
+<td>城市名称，填写则只显示该城市的商家</td>
+</tr>
+<tr class="row-even"><td>mall</td>
+<td>String</td>
+<td>【可选】</td>
+<td>商场ID，填写则只显示该属于该商场的排队商家。【注：商场ID由” 美味不用等”分配】</td>
+</tr>
+<tr class="row-odd"><td>main</td>
+<td>String</td>
+<td>【可选】</td>
+<td>总店ID，填写则只显示总店的商家【注：总店ID由” 美味不用等”分配】</td>
+</tr>
+<tr class="row-even"><td>style</td>
+<td>String</td>
+<td>【可选】</td>
+<td>控制风格样式</td>
+</tr>
+</tbody>
+</table>
+<p>输出
+原始网页</p>
+</div>
+<div class="section" id="id3">
+<h2>我的排队<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>功能说明 显示用户的排队列表</p>
+<p>接口地址 <a class="reference external" href="http://9now.cn/api/web/weixin/mine.php">http://9now.cn/api/web/weixin/mine.php</a></p>
+<p>请求方式 Get</p>
+<p>JSONP   否</p>
+<p>输入参数</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="10%" />
+<col width="8%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">是否必须</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>String</td>
+<td>【必须】</td>
+<td>唯一口令</td>
+</tr>
+<tr class="row-odd"><td>openid</td>
+<td>String</td>
+<td>【可选】</td>
+<td>接入方的微信openid</td>
+</tr>
+<tr class="row-even"><td>mobile</td>
+<td>Int</td>
+<td>【可选】</td>
+<td>用户手机号</td>
+</tr>
+<tr class="row-odd"><td>latitude</td>
+<td>Float</td>
+<td>【可选】</td>
+<td>用户当前地址位置的纬度</td>
+</tr>
+<tr class="row-even"><td>longitude</td>
+<td>Float</td>
+<td>【可选】</td>
+<td>用户当前地址位置的经度</td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>String</td>
+<td>【可选】</td>
+<td>城市名称，填写则只显示该城市的商家</td>
+</tr>
+<tr class="row-even"><td>mall</td>
+<td>String</td>
+<td>【可选】</td>
+<td>商场ID，填写则只显示该属于该商场的排队商家。【注：商场ID由” 美味不用等”分配】</td>
+</tr>
+<tr class="row-odd"><td>main</td>
+<td>String</td>
+<td>【可选】</td>
+<td>总店ID，填写则只显示总店的商家【注：总店ID由” 美味不用等”分配】</td>
+</tr>
+</tbody>
+</table>
+<p>输出
+原始网页</p>
+</div>
+<div class="section" id="id4">
+<h2>推送排队状态变更信息<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>功能说明  美味不用等提交排队状态变更信息，接入方收到后按照自定义的UI推送给取号用户。</p>
+<p>接口地址  由接入方提供</p>
+<p>请求方式  Post</p>
+<p>JSONP 否</p>
+<p>输入参数</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="11%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sfrom</td>
+<td>String</td>
+<td>来源标识，【注：来源标示由接入方注册给美味不用等授权账号】</td>
+</tr>
+<tr class="row-odd"><td>mobile</td>
+<td>String</td>
+<td>手机号</td>
+</tr>
+<tr class="row-even"><td>serialid</td>
+<td>String</td>
+<td>美味不用等流水号</td>
+</tr>
+<tr class="row-odd"><td>orderid</td>
+<td>String</td>
+<td>接入方orderid（忽略不入库）</td>
+</tr>
+<tr class="row-even"><td>openid</td>
+<td>String</td>
+<td>来源方微信公共号id，服务号</td>
+</tr>
+<tr class="row-odd"><td>num</td>
+<td>String</td>
+<td>号单</td>
+</tr>
+<tr class="row-even"><td>qname</td>
+<td>String</td>
+<td>餐桌类型（如：小桌）</td>
+</tr>
+<tr class="row-odd"><td>qattr</td>
+<td>String</td>
+<td>餐桌可容纳人数（如：1-2人）</td>
+</tr>
+<tr class="row-even"><td>people</td>
+<td>Int</td>
+<td>用餐人数</td>
+</tr>
+<tr class="row-odd"><td>credit</td>
+<td>Int</td>
+<td>用户当前信誉值</td>
+</tr>
+<tr class="row-even"><td>state</td>
+<td>Int</td>
+<td>排号单状态</td>
+</tr>
+<tr class="row-odd"><td>wait</td>
+<td>Int</td>
+<td>前面等待桌数</td>
+</tr>
+<tr class="row-even"><td>desc</td>
+<td>String</td>
+<td>变更提示（如：取号成功）</td>
+</tr>
+<tr class="row-odd"><td>sign</td>
+<td>String</td>
+<td>校验签名（需要校验，但忽略不入库）</td>
+</tr>
+</tbody>
+</table>
+<p>排号单状态:</p>
+<div class="highlight-python"><div class="highlight"><pre>1取号中
+2取号成功
+3取号成功（美味不用等历史遗留问题，同2）
+4叫号
+5就餐
+6过号
+7取消
+11取号失败
+</pre></div>
+</div>
+<p>sign算法如下：:</p>
+<div class="highlight-python"><div class="highlight"><pre>所有请求数据均需为 UTF-8 编码，请求 URL 参数名称全部小写。
+STEP1：对 POST 参数按照 KEY 进行排序；
+STEP2：将排序后的 KV 对拼接；
+STEP3：将 secret_key 拼接到最后（secret_key= gepuscene123），
+拼接后格式:
+key1=value1&amp;key2=value2&amp;…….&amp;sk= secret_key；
+STEP4：将所得字符串进行 MD5 运算，返回即为 sign的值。
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">密钥secret_key由接入方注册给美味不用等授权账号</p>
+</div>
+<p>输出参数:</p>
+<div class="highlight-python"><div class="highlight"><pre>errno   Int      错误状态，0：正常；1：出错
+errmsg  String   错误描述，正常则为空
+result  String  成功提示（如：接收成功）
+</pre></div>
+</div>
+<p>输出示例:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;err&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">&quot;errMsg&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+    <span class="s">&quot;result&quot;</span><span class="p">:</span> <span class="s">&quot;接收成功&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>提供永久二维码<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>使用第三方永久场景二维码</p>
+<p>需要对方提供一系列的微信永久二维码，</p>
+<p>微信公共号永久二维码生成方法：</p>
+<p>参考：<a class="reference external" href="http://mp.weixin.qq.com/wiki/18/28fc21e7ed87bec960651f0ce873ef8a.html">http://mp.weixin.qq.com/wiki/18/28fc21e7ed87bec960651f0ce873ef8a.html</a></p>
+<p>我们需要场景值，以及下表格中的url内容，请以文本文件格式提供，格式见附件</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ticket</td>
+<td>获取的二维码ticket，凭借此ticket可以在有效时间内换取二维码。</td>
+</tr>
+<tr class="row-odd"><td>expire_seconds</td>
+<td>二维码的有效时间，以秒为单位。最大不超过1800。</td>
+</tr>
+<tr class="row-even"><td>url</td>
+<td>二维码图片解析后的地址，开发者可根据该地址自行生成需要的二维码图片</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h2>第三方微信二维码扫码接口<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>接口地址   <a class="reference external" href="http://api.9now.cn/api/queue/wx/">http://api.9now.cn/api/queue/wx/</a></p>
+<p>请求方式   POST</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="12%" />
+<col width="9%" />
+<col width="38%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数名</th>
+<th class="head">参数含义</th>
+<th class="head">是否必须</th>
+<th class="head">描述</th>
+<th class="head">示例</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>token</td>
+<td>接入方token</td>
+<td>是</td>
+<td>由美味不用等提供</td>
+<td>WoAiMw</td>
+</tr>
+<tr class="row-odd"><td>scene</td>
+<td>场景值</td>
+<td>是</td>
+<td>接入方的微信场景二维码对应的场景值</td>
+<td>35</td>
+</tr>
+<tr class="row-even"><td>openid</td>
+<td>微信openid</td>
+<td>是</td>
+<td>接入方</td>
+<td>oWT18jmTx8qwMcYzs3Z4vtjSc5ca</td>
+</tr>
+<tr class="row-odd"><td>t</td>
+<td>时间戳</td>
+<td>是</td>
+<td>接入方填写访问时间</td>
+<td>12312452141</td>
+</tr>
+<tr class="row-even"><td>sn</td>
+<td>校验核</td>
+<td>是</td>
+<td>安全校验和</td>
+<td>md5(t+appkey)</td>
+</tr>
+</tbody>
+</table>
+<p>响应格式:</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    &quot;errno&quot;:0,
+    &quot;result&quot;: {//排号信息
+        {
+            &quot;name&quot;:&quot;美味体验店&quot;,
+            &quot;openid&quot;:&quot; oWT18jmTx8qwMcYzs3Z4vtjSc5ca &quot;,
+            &quot;sid&quot;:3418,
+            &quot;exid&quot;:&quot;SH1&quot;,
+            &quot;serialid &quot;:1232,
+            &quot;qname&quot;:&quot;小桌&quot;,
+            &quot;qattr &quot;:&quot;1-2人&quot;,
+            &quot;type&quot;:0,
+            &quot;state&quot;:2,//取号状态
+            &quot;sname&quot;:&quot;已取号&quot;,
+            &quot;num&quot;:&quot;A002&quot;,
+            &quot;people&quot;:3,
+            &quot;wait&quot;:3, //需等待人数
+            &quot;waittime&quot;:&quot;30分钟&quot;//预计等待时间
+            &quot;nowwait&quot;:&quot;30分钟&quot;//已等待时间
+            &quot;notice&quot;:&quot;商家离线，请联系商家&quot;, //提示信
+        },
+   }
+}
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="21%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">返回字段</th>
+<th class="head">含义</th>
+<th class="head">示例</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>errno</td>
+<td>int</td>
+<td>0成功，非0失败</td>
+</tr>
+<tr class="row-odd"><td>errmsg</td>
+<td>string</td>
+<td>系统错误</td>
+</tr>
+</tbody>
+</table>
+<p>result</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="9%" />
+<col width="26%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">返回字段</th>
+<th class="head">字段类型</th>
+<th class="head">含义</th>
+<th class="head">示例</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sid</td>
+<td>int</td>
+<td>美味不用等商家id</td>
+<td>3418</td>
+</tr>
+<tr class="row-odd"><td>exid</td>
+<td>String</td>
+<td>第三方商家id</td>
+<td>SH1</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>美味不用等商家名称</td>
+<td>美味体验店</td>
+</tr>
+<tr class="row-odd"><td>state</td>
+<td>int</td>
+<td>排号单状态</td>
+<td>1、取号中；2、3已取号；4、叫号中；5、已就餐；6、已过号</td>
+</tr>
+<tr class="row-even"><td>sname</td>
+<td>String</td>
+<td>取号状态名称</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>qname</td>
+<td>string</td>
+<td>小桌</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>qattr</td>
+<td>string</td>
+<td>1-2人</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>int</td>
+<td>队列类型</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>people</td>
+<td>int</td>
+<td>取号人数</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>num</td>
+<td>String</td>
+<td>排队号码</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>wait</td>
+<td>int</td>
+<td>等待人数</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>waittime</td>
+<td>string</td>
+<td>预计等待时间</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>nowwait</td>
+<td>String</td>
+<td>已等待时间</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>notice</td>
+<td>String</td>
+<td>提醒消息：例如过号作废等</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="美味不用等开放接口文档" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, puscene.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

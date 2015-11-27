@@ -73,6 +73,68 @@ isActive                    boolean     是否有效标识。默认为true。其
 ========================== ============ =================================================================================== ======== ========
 
 
+示例代码(json)
+^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	[
+	    {
+	        "vendorShopId":1741,
+	        "dishes":
+	            [
+	                {
+	                    "vendorDishId":"400",
+	                    "dishName":"烧味双拼",
+	                    "dishNameEng":"Semidetached Barbecue",
+	                    "dishNameOther":"焼き味双拼",
+	                    "chef":"Alain passade",
+	                    "regionId":"0",
+	                    "mealTypeId":"0",
+	                    "picture":"http://www.dianping.com/photos/68888499",
+	                    "defaultPicture":"http://www.dianping.com/photos/37057247",
+	                    "recommendIndex":5,
+	                    "unit":"例",
+	                    "salesVolume":725,
+	                    "maxUnitPerRequest":4,
+	                    "maxUnitPerTakeawayRequest":2,
+	                    "taste":"不辣",
+	                    "tag":"点单率高",
+	                    "cookStyle":"蒸",
+	                    "saleType":0,
+	                    "status":1,
+	                    "description":"烧味双拼的烧鸭很不错，烧肉肥的比较多",
+	                    "price":324.2,
+	                    "salePrice":300
+	                },
+	                {
+	                    "vendorDishId":"400",
+	                    "dishName":"咸柠檬七喜",
+	                    "dishNameEng":"Salted Lemon Sprite",
+	                    "dishNameOther":"塩レモンセブンアップ",
+	                    "chef":"Akyo luo",
+	                    "regionId":"1",
+	                    "mealTypeId":"2,3",
+	                    "picture":"http://www.dianping.com/photos/66382338/member",
+	                    "defaultPicture":"http://www.dianping.com/photos/66382342/member",
+	                    "recommendIndex":0,
+	                    "unit":"杯",
+	                    "salesVolume":239,
+	                    "maxUnitPerRequest":2,
+	                    "taste":"不辣",
+	                    "tag":"口味独特",
+	                    "cookStyle":"冰镇",
+	                    "saleType":1,
+	                    "status":1,
+	                    "description":"柠檬味很浓,有点酸",
+	                    "price":545,
+	                    "salePrice":500
+	                }
+	            ]
+	    }
+	]
+                
+
 
 
 类目上传
@@ -133,6 +195,59 @@ description             string      类目描述信息                          
 附注：isActive的含义：
 1、类似于数据库中的软删除表示，如果isActive为false，则该数据无效，不会提供给其他程序使用。同时，与该类目相关的映射关系也无效，但是与类目有映射关系的菜品仍然存在。
 反之，则会提供给其他相关程序使用。
+
+
+示例代码(json)
+^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	[
+	    {
+	        "vendorShopId":1741,
+	        "categories":
+	            [
+	                {
+	                    "vendorCategoryId":"123",
+	                    "categoryName":"港式烧味",
+	                    "parentVendorCategoryId":100,
+	                    "rank":8,
+	                    "limit":2,
+	                    "description":"港式烧味"
+	                },
+	                {
+	                    "vendorCategoryId":"130",
+	                    "categoryName":"港式饮料",
+	                    "parentVendorCategoryId":100,
+	                    "rank":7,
+	                    "limit":1,
+	                    "description":"港式饮料"
+	                }
+	            ]
+	    },
+	    {
+	        "vendorShopId":1761,
+	        "categories":
+	            [
+	                {
+	                    "vendorCategoryId":"243939",
+	                    "categoryName":"主食",
+	                    "parentVendorCategoryId":24000,
+	                    "rank":1,
+	                    "limit":10,
+	                    "description":"主食"
+	                },
+	                {
+	                    "vendorCategoryId":"243784",
+	                    "categoryName":"凉菜",
+	                    "parentVendorCategoryId":21000,
+	                    "rank":2,
+	                    "limit":8,
+	                    "description":"凉菜"
+	                }
+	            ]
+	    }
+	]
 
 
 下单

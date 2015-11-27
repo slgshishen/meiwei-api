@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>第三方微信公众号接入 &mdash; 美味不用等开放接口 0.1 documentation</title>
+  <title>排队 &mdash; 美味不用等开放接口 0.1 documentation</title>
   
 
   
@@ -31,6 +31,7 @@
 
   
     <link rel="top" title="美味不用等开放接口 0.1 documentation" href="index.html"/>
+        <link rel="next" title="点餐" href="menu.html"/>
         <link rel="prev" title="美味不用等开放接口文档" href="index.html"/> 
 
   
@@ -71,12 +72,31 @@
           
           
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">第三方微信公众号接入</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">排队商家列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">我的排队</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">推送排队状态变更信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">提供永久二维码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">第三方微信二维码扫码接口</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">排队</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">第三方微信公众号接入</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">排队商家列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">我的排队</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">推送排队状态变更信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">提供永久二维码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">第三方微信二维码扫码接口</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="menu.html">点餐</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="menu.html#id2">菜品上传</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="menu.html#id3">接口说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="menu.html#id4">请求说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="menu.html#id5">参数说明</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="menu.html#id6">类目上传</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="menu.html#id7">接口说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="menu.html#id8">请求说明</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="menu.html#id9">下单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="menu.html#id10">查询订单</a></li>
 </ul>
 </li>
 </ul>
@@ -103,7 +123,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>第三方微信公众号接入</li>
+    <li>排队</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -117,10 +137,12 @@
           <div role="main" class="document">
             
   <div class="section" id="id1">
-<h1>第三方微信公众号接入<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>第三方微信公众号(服务号)接入开发接口文档</p>
+<h1>排队<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>排队商家列表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>第三方微信公众号接入<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>第三方微信公众号(服务号)接入开发接口文档</p>
+<div class="section" id="id3">
+<h3>排队商家列表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>功能说明:  显示授权的排队商家列表</p>
 <p>接口地址:  <a class="reference external" href="http://9now.cn/api/web/weixin/near.php">http://9now.cn/api/web/weixin/near.php</a></p>
 <p>请求方式:  Get</p>
@@ -191,8 +213,8 @@
 <p>输出
 原始网页</p>
 </div>
-<div class="section" id="id3">
-<h2>我的排队<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>我的排队<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>功能说明 显示用户的排队列表</p>
 <p>接口地址 <a class="reference external" href="http://9now.cn/api/web/weixin/mine.php">http://9now.cn/api/web/weixin/mine.php</a></p>
 <p>请求方式 Get</p>
@@ -258,8 +280,8 @@
 <p>输出
 原始网页</p>
 </div>
-<div class="section" id="id4">
-<h2>推送排队状态变更信息<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>推送排队状态变更信息<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>功能说明  美味不用等提交排队状态变更信息，接入方收到后按照自定义的UI推送给取号用户。</p>
 <p>接口地址  由接入方提供</p>
 <p>请求方式  Post</p>
@@ -376,13 +398,13 @@ result  String  成功提示（如：接收成功）
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>提供永久二维码<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>提供永久二维码<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>使用第三方永久场景二维码</p>
 <p>需要对方提供一系列的微信永久二维码，</p>
 <p>微信公共号永久二维码生成方法：</p>
 <p>参考：<a class="reference external" href="http://mp.weixin.qq.com/wiki/18/28fc21e7ed87bec960651f0ce873ef8a.html">http://mp.weixin.qq.com/wiki/18/28fc21e7ed87bec960651f0ce873ef8a.html</a></p>
-<p>我们需要场景值，以及下表格中的url内容，请以文本文件格式提供，格式见附件</p>
+<p>我们需要场景值，以及下表格中的url内容，请以文本文件格式提供，格式见范例</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -423,8 +445,8 @@ result  String  成功提示（如：接收成功）
 </tbody>
 </table>
 </div>
-<div class="section" id="id6">
-<h2>第三方微信二维码扫码接口<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>第三方微信二维码扫码接口<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>接口地址   <a class="reference external" href="http://api.9now.cn/api/queue/wx/">http://api.9now.cn/api/queue/wx/</a></p>
 <p>请求方式   POST</p>
 <table border="1" class="docutils">
@@ -469,7 +491,7 @@ result  String  成功提示（如：接收成功）
 <td>12312452141</td>
 </tr>
 <tr class="row-even"><td>sn</td>
-<td>校验核</td>
+<td>校验和</td>
 <td>是</td>
 <td>安全校验和</td>
 <td>md5(t+appkey)</td>
@@ -615,12 +637,15 @@ result  String  成功提示（如：接收成功）
 </table>
 </div>
 </div>
+</div>
 
 
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="menu.html" class="btn btn-neutral float-right" title="点餐" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="美味不用等开放接口文档" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

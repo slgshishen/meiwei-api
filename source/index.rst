@@ -11,8 +11,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   howto
+   mapping
    weixin
    menu
+   book
 
 
 

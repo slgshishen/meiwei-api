@@ -47,8 +47,11 @@ append	       boolean	    是否增量上传。默认为false。其中true表示
 ^^^^^^^^^^^^^
 
 HTTP请求方式：POST
+
 返回数据格式：JSON
+
 测试环境 http://test2.9now.net/api/menu/cate
+
 正式环境 http://api.9now.cn/api/menu/cate
 
 下单

@@ -6,7 +6,8 @@
 美味不用等开放接口文档
 ======================================
 
-Contents:
+.. image:: _static/images/logo.png
+.. image:: _static/images/slogan.png
 
 .. toctree::
    :maxdepth: 2

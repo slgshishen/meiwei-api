@@ -1,6 +1,5 @@
 <?php
 
-
 class SimpleStringCypher {
 
     public static function encrypt($input, $key){
@@ -50,4 +49,5 @@ class SimpleStringCypher {
     }
 
 }
+
 ?>

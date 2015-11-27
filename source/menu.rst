@@ -79,65 +79,84 @@ isActive                    boolean     是否有效标识。默认为true。其
 
 ::
 
-	[
-	    {
-	        "vendorShopId":1741,
-	        "dishes":
-	            [
-	                {
-	                    "vendorDishId":"400",
-	                    "vendorCategoryId":"100",
-	                    "dishName":"烧味双拼",
-	                    "dishNameEng":"Semidetached Barbecue",
-	                    "dishNameOther":"焼き味双拼",
-	                    "chef":"Alain passade",
-	                    "regionId":"0",
-	                    "mealTypeId":"0",
-	                    "picture":"http://www.dianping.com/photos/68888499",
-	                    "defaultPicture":"http://www.dianping.com/photos/37057247",
-	                    "recommendIndex":5,
-	                    "unit":"例",
-	                    "salesVolume":725,
-	                    "maxUnitPerRequest":4,
-	                    "maxUnitPerTakeawayRequest":2,
-	                    "taste":"不辣",
-	                    "tag":"点单率高",
-	                    "cookStyle":"蒸",
-	                    "saleType":0,
-	                    "status":1,
-	                    "description":"烧味双拼的烧鸭很不错，烧肉肥的比较多",
-	                    "price":324.2,
-	                    "salePrice":300
-	                },
-	                {
-	                    "vendorDishId":"400",
-	                    "vendorCategoryId":"200",
-	                    "dishName":"咸柠檬七喜",
-	                    "dishNameEng":"Salted Lemon Sprite",
-	                    "dishNameOther":"塩レモンセブンアップ",
-	                    "chef":"Akyo luo",
-	                    "regionId":"1",
-	                    "mealTypeId":"2,3",
-	                    "picture":"http://www.dianping.com/photos/66382338/member",
-	                    "defaultPicture":"http://www.dianping.com/photos/66382342/member",
-	                    "recommendIndex":0,
-	                    "unit":"杯",
-	                    "salesVolume":239,
-	                    "maxUnitPerRequest":2,
-	                    "taste":"不辣",
-	                    "tag":"口味独特",
-	                    "cookStyle":"冰镇",
-	                    "saleType":1,
-	                    "status":1,
-	                    "description":"柠檬味很浓,有点酸",
-	                    "price":545,
-	                    "salePrice":500
-	                }
-	            ]
-	    }
-	]
+    [
+        {
+            "vendorShopId":1741,
+            "dishes":
+                [
+                    {
+                        "vendorDishId":"400",
+                        "vendorCategoryId":"100",
+                        "dishName":"烧味双拼",
+                        "dishNameEng":"Semidetached Barbecue",
+                        "dishNameOther":"焼き味双拼",
+                        "chef":"Alain passade",
+                        "regionId":"0",
+                        "mealTypeId":"0",
+                        "picture":"http://www.dianping.com/photos/68888499",
+                        "defaultPicture":"http://www.dianping.com/photos/37057247",
+                        "recommendIndex":5,
+                        "unit":"例",
+                        "salesVolume":725,
+                        "maxUnitPerRequest":4,
+                        "maxUnitPerTakeawayRequest":2,
+                        "taste":"不辣",
+                        "tag":"点单率高",
+                        "cookStyle":"蒸",
+                        "saleType":0,
+                        "status":1,
+                        "description":"烧味双拼的烧鸭很不错，烧肉肥的比较多",
+                        "price":324.2,
+                        "salePrice":300
+                    },
+                    {
+                        "vendorDishId":"400",
+                        "vendorCategoryId":"200",
+                        "dishName":"咸柠檬七喜",
+                        "dishNameEng":"Salted Lemon Sprite",
+                        "dishNameOther":"塩レモンセブンアップ",
+                        "chef":"Akyo luo",
+                        "regionId":"1",
+                        "mealTypeId":"2,3",
+                        "picture":"http://www.dianping.com/photos/66382338/member",
+                        "defaultPicture":"http://www.dianping.com/photos/66382342/member",
+                        "recommendIndex":0,
+                        "unit":"杯",
+                        "salesVolume":239,
+                        "maxUnitPerRequest":2,
+                        "taste":"不辣",
+                        "tag":"口味独特",
+                        "cookStyle":"冰镇",
+                        "saleType":1,
+                        "status":1,
+                        "description":"柠檬味很浓,有点酸",
+                        "price":545,
+                        "salePrice":500
+                    }
+                ]
+        }
+    ]
                 
 
+返回参数说明
+^^^^^^^^^^^^^^^^^^
+
+======== ======== ========
+字段      类型     描述
+======== ======== ========
+code*    int      校验结果
+msg      String   详细描述
+======== ======== ========
+
+返回码说明
+^^^^^^^^^^^^^^^^^^
+
+======== =================
+code     msg
+======== =================
+2391     成功
+2399     有错误或未知情况
+======== =================
 
 
 类目上传
@@ -205,56 +224,89 @@ description             string      类目描述信息                          
 
 ::
 
-	[
-	    {
-	        "vendorShopId":1741,
-	        "categories":
-	            [
-	                {
-	                    "vendorCategoryId":"123",
-	                    "categoryName":"港式烧味",
-	                    "parentVendorCategoryId":100,
-	                    "rank":8,
-	                    "limit":2,
-	                    "description":"港式烧味"
-	                },
-	                {
-	                    "vendorCategoryId":"130",
-	                    "categoryName":"港式饮料",
-	                    "parentVendorCategoryId":100,
-	                    "rank":7,
-	                    "limit":1,
-	                    "description":"港式饮料"
-	                }
-	            ]
-	    },
-	    {
-	        "vendorShopId":1761,
-	        "categories":
-	            [
-	                {
-	                    "vendorCategoryId":"243939",
-	                    "categoryName":"主食",
-	                    "parentVendorCategoryId":24000,
-	                    "rank":1,
-	                    "limit":10,
-	                    "description":"主食"
-	                },
-	                {
-	                    "vendorCategoryId":"243784",
-	                    "categoryName":"凉菜",
-	                    "parentVendorCategoryId":21000,
-	                    "rank":2,
-	                    "limit":8,
-	                    "description":"凉菜"
-	                }
-	            ]
-	    }
-	]
+    [
+        {
+            "vendorShopId":1741,
+            "categories":
+                [
+                    {
+                        "vendorCategoryId":"123",
+                        "categoryName":"港式烧味",
+                        "parentVendorCategoryId":100,
+                        "rank":8,
+                        "limit":2,
+                        "description":"港式烧味"
+                    },
+                    {
+                        "vendorCategoryId":"130",
+                        "categoryName":"港式饮料",
+                        "parentVendorCategoryId":100,
+                        "rank":7,
+                        "limit":1,
+                        "description":"港式饮料"
+                    }
+                ]
+        },
+        {
+            "vendorShopId":1761,
+            "categories":
+                [
+                    {
+                        "vendorCategoryId":"243939",
+                        "categoryName":"主食",
+                        "parentVendorCategoryId":24000,
+                        "rank":1,
+                        "limit":10,
+                        "description":"主食"
+                    },
+                    {
+                        "vendorCategoryId":"243784",
+                        "categoryName":"凉菜",
+                        "parentVendorCategoryId":21000,
+                        "rank":2,
+                        "limit":8,
+                        "description":"凉菜"
+                    }
+                ]
+        }
+    ]
 
+
+返回参数说明
+^^^^^^^^^^^^^^^^^^^^
+
+======== ======== ========
+字段      类型     描述
+======== ======== ========
+code*    int      校验结果
+msg      String   详细描述
+======== ======== ========
+
+返回码说明
+^^^^^^^^^^^^^^^^^^^
+
+======== =================
+code     msg
+======== =================
+2392     成功
+2399     有错误或未知情况
+======== =================
 
 下单
 -------------
+
+接口说明
+^^^^^^^^^^^
+
+此接口由厂商实现，美味通过调用该接口进行下单信息确认。
+
+请求说明
+^^^^^^^^^^^^^
+
+HTTP请求方式：POST
+返回数据格式：JSON
+厂商测试环境url
+厂商正式环境url
 
 
 查询订单

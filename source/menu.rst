@@ -48,6 +48,7 @@ dishes参数说明
 字段                       类型         描述                                                                                开始版本  终止版本
 ========================== ============ =================================================================================== ======== ========
 vendorDishId*               string      厂商菜品id(必填)                                                                    v1.0.0    -
+vendorCategoryId*           string      厂商类目id(必填)                                                                    v1.0.0    -
 dishName*                   string      菜品名称(必填)                                                                      v1.0.0    -
 dishNameEng                 string      菜品英文名称                                                                        v1.0.0    -
 dishNameOther               string      菜品其他名称                                                                        v1.0.0    -
@@ -85,6 +86,7 @@ isActive                    boolean     是否有效标识。默认为true。其
 	            [
 	                {
 	                    "vendorDishId":"400",
+	                    "vendorCategoryId":"100",
 	                    "dishName":"烧味双拼",
 	                    "dishNameEng":"Semidetached Barbecue",
 	                    "dishNameOther":"焼き味双拼",
@@ -109,6 +111,7 @@ isActive                    boolean     是否有效标识。默认为true。其
 	                },
 	                {
 	                    "vendorDishId":"400",
+	                    "vendorCategoryId":"200",
 	                    "dishName":"咸柠檬七喜",
 	                    "dishNameEng":"Salted Lemon Sprite",
 	                    "dishNameOther":"塩レモンセブンアップ",

@@ -38,235 +38,31 @@ Base 64的内容放入content字段进行传输，收到content字段时，可�
 加密的时候，将明文当作八位数组，依循AES规范，用aes key加密得到aes的加密内容，然后将aes的加密内容用Base 64表示为字符串得到对应的密文。
 
 
-示例代码(Java)::
+示例代码(Java)
 
-    import org.apache.commons.codec.binary.Base64;
-    import javax.crypto.Cipher;
-    import javax.crypto.SecretKey;
-    import javax.crypto.spec.SecretKeySpec;
-
-    public class SimpleStringCypher {
-        private byte[] linebreak = {};
-        private String secret;
-        private SecretKey key;
-        private Cipher cipher;
-        private Base64 coder;
-
-        public SimpleStringCypher(String secret) {
-            try {
-                coder = new Base64(32, linebreak, true);
-                //secret为密钥 S2
-                byte[] secrets = coder.decode(secret);
-                key = new SecretKeySpec(secrets, "AES");
-                cipher = Cipher.getInstance("AES/ECB/PKCS5Padding", "SunJCE");
-            } catch (Throwable t) {
-                t.printStackTrace();
-            }
-        }
-
-        //对推送消息中content进行加密
-        public synchronized String encrypt(String plainText) throws Exception {
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-            byte[] cipherText = cipher.doFinal(plainText.getBytes());
-            return new String(coder.encode(cipherText));
-        }
-
-        //对返回结果的content进行解密
-        public synchronized String decrypt(String codedText) throws Exception {
-            byte[] encypted = coder.decode(codedText.getBytes());
-            cipher.init(Cipher.DECRYPT_MODE, key);
-            byte[] decrypted = cipher.doFinal(encypted);
-            return new String(decrypted, "UTF-8");
-        }
-    }
+.. literalinclude:: _code/demo.java
+   :language: java
+   :linenos:
                     
-示例代码(.Net)::
+示例代码(.Net)
 
-    using System;
-    using System.Text;
-    using System.Security.Cryptography;
-    using System.Configuration;
-
-    namespace ConsoleApplication1
-    {
-        class SimpleStringCypher
-        {
-            private RijndaelManaged RM;
-
-            public SimpleStringCypher(String secret)
-            {
-                //secret为密钥 S2
-                var keyBytes = PrepareAesKey(secret);
-
-                RM = new System.Security.Cryptography.RijndaelManaged
-                {
-                    Mode = System.Security.Cryptography.CipherMode.ECB,
-                    Padding = System.Security.Cryptography.PaddingMode.PKCS7,
-                    KeySize = 128,
-                    BlockSize = 128,
-                    Key = keyBytes,
-                    IV = keyBytes
-                };
-            }
-
-            public string Encrypt(string plaintext)
-            {
-                if (string.IsNullOrEmpty(plaintext)) return null;
-                Byte[] plaintextBytes = Encoding.UTF8.GetBytes(plaintext);
-
-                ICryptoTransform cTransform = RM.CreateEncryptor();
-                Byte[] resultArray = cTransform.TransformFinalBlock(plaintextBytes,
-                            0, plaintextBytes.Length);
-
-                return URLSafeBase64Reflow(Convert.ToBase64String(resultArray,
-                            0, resultArray.Length));
-            }
-
-            public string Decrypt(string codedText)
-            {
-                if (string.IsNullOrEmpty(codedText)) return null;
-                Byte[] toDeryptArray = Convert.FromBase64String(
-                            AutomaticallyPad(NormalBase64Reflow(codedText)));
-
-                ICryptoTransform cTransform = RM.CreateDecryptor();
-                Byte[] resultArray = cTransform.TransformFinalBlock(toDeryptArray,
-                            0, toDeryptArray.Length);
-
-                return Encoding.UTF8.GetString(resultArray);
-            }
-
-            private static string AutomaticallyPad(string base64)
-            {
-                return base64.PadRight(base64.Length + (4 - base64.Length % 4) % 4, '=');
-            }
-
-            private static string URLSafeBase64Reflow(string base64)
-            {
-                return base64.Replace("=", String.Empty).Replace('+', '-').Replace('/', '_');
-            }
-
-            private static string NormalBase64Reflow(string base64)
-            {
-                return base64.Replace("=", String.Empty).Replace('-', '+').Replace('_', '/');
-            }
-
-            private static byte[] PrepareAesKey(string key)
-            {
-                Byte[] keyBinary = Convert.FromBase64String(
-                            AutomaticallyPad(NormalBase64Reflow(key)));
-                var keyBytes = new byte[16];
-                Array.Copy(keyBinary, keyBytes, Math.Min(keyBytes.Length, keyBinary.Length));
-                return keyBytes;
-            }
-        }
-    }
+.. literalinclude:: _code/demo.cs
+   :language: csharp
+   :linenos:
 
                     
-示例代码(php)::
+示例代码(php)
 
-    <?php
-
-
-    class SimpleStringCypher {
-
-       public static function encrypt($input, $key){
-        //key为密钥 S2
-        $key = SimpleStringCypher::reflowNormalBase64($key);
-        $size  = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_ECB);
-        $input = SimpleStringCypher::pkcs5_pad($input, $size);
-        $td    = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_ECB, '');
-        $iv    = mcrypt_create_iv(mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
-        mcrypt_generic_init($td, base64_decode($key), $iv);
-        $data = mcrypt_generic($td, $input);
-        mcrypt_generic_deinit($td);
-        mcrypt_module_close($td);
-        $data = base64_encode($data);
-        $data = SimpleStringCypher::reflowURLSafeBase64($data);
-        return $data;
-      }
-
-      public static function decrypt($sStr, $sKey){
-        //sKey为密钥 S2
-        $sStr = SimpleStringCypher::reflowNormalBase64($sStr);
-        $sKey = SimpleStringCypher::reflowNormalBase64($sKey);
-        $decrypted = mcrypt_decrypt(MCRYPT_RIJNDAEL_128,
-                            base64_decode($sKey), base64_decode($sStr),
-                            MCRYPT_MODE_ECB);
-        $dec_s     = strlen($decrypted);
-        $padding   = ord($decrypted[$dec_s - 1]);
-        $decrypted = substr($decrypted, 0, -$padding);
-        return $decrypted;
-      }
-
-      private static function reflowURLSafeBase64($str){
-        $str=str_replace("/","_",$str);
-        $str=str_replace("+","-",$str);
-        return $str;
-      }
-
-      private static function reflowNormalBase64($str){
-        $str=str_replace("_","/",$str);
-        $str=str_replace("-","+",$str);
-        return $str;
-      }
-
-      private static function pkcs5_pad($text, $blocksize){
-        $pad = $blocksize - (strlen($text) % $blocksize);
-        return $text . str_repeat(chr($pad), $pad);
-      }
-
-    }
-    ?>
+.. literalinclude:: _code/demo.php
+   :language: javascript
+   :linenos:
 
                     
-示例代码(nodejs)::
+示例代码(nodejs)
 
-    var crypto = require('crypto');
-
-    var ALGORITHM = 'aes-128-ecb';
-
-    function fromUrlSafe(str) {
-        return str.replace(/-/g, "+").replace(/_/g, "/");
-    }
-    function toUrlSafe(str) {
-        return str.replace(/\+/g, "-").replace(/\//g, "_");
-    }
-
-    function SimpleStringCipher(secretStr) {
-        //secretStr为密钥 S2
-        this.secret = new Buffer(fromUrlSafe(secretStr), 'base64');
-    }
-    SimpleStringCipher.prototype = {
-        encrypt: function (data) {
-            if (!data instanceof Buffer) {
-                data = new Buffer('' + data);
-            }
-            var cipher = crypto.createCipher(ALGORITHM, this.secret);
-            var res = cipher.update(data);
-            var rest = cipher.final();
-            return toUrlSafe(Buffer.concat([res, rest]).toString('base64'));
-        },
-        decrypt: function (data) {
-            data = new Buffer(fromUrlSafe(data), 'base64');
-            var cipher = crypto.createDecipher(ALGORITHM, this.secret);
-            var res = cipher.update(data);
-            var rest = cipher.final();
-            return Buffer.concat([res, rest]).toString();
-        }
-    };
-
-    module.exports = SimpleStringCipher;
-
-    // 用法示例
-    var cipher = new SimpleStringCipher('YXNkZmFzZGZhc2RmYXNkCg==');
-    var src = 'This is a\ntest case\n';
-    var encoded = cipher.encrypt(src);
-    var decoded = cipher.decrypt(encoded);
-
-    console.log(src);
-    console.log(encoded);
-    console.log(decoded);
-
+.. literalinclude:: _code/nodejs_demo.js
+   :language: javascript
+   :linenos:
 
 
 发送/接收消息
@@ -318,6 +114,7 @@ properties  json       附加信息map转换成的json
 
 返回码和问题诊断
 ------------------
+
 
 接入上线步骤说明
 ------------------

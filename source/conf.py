@@ -47,8 +47,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'美味不用等开放接口'
-copyright = u'2015, puscene'
-author = u'kenneth'
+copyright = u'2015, 上海普景信息科技有限公司'
+author = u'美味开放平台Kenneth'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -274,8 +274,7 @@ else:
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'meiweiapi.tex', u'美味不用等开放平台接口文档',
-   u'kenneth', 'manual'),
+  (master_doc, 'meiweiapi.tex', u'美味不用等开放平台接口文档', u'美味开放平台Kenneth', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -304,8 +303,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'meiweiapi', u'美味不用等开放平台接口文档',
-     [author], 1)
+    (master_doc, 'meiweiapi', u'美味不用等开放平台接口文档', [author], 1)
 ]
 
 # If true, show URL addresses after external links.

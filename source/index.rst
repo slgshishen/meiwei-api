@@ -7,7 +7,17 @@
 ======================================
 
 .. image:: _static/images/logo.png
+   :height: 200px
+   :width: 400 px
+   :scale: 50 %
+   :alt: 美味不用等
+
 .. image:: _static/images/slogan.png
+   :height: 200px
+   :width: 400 px
+   :scale: 50 %
+   :alt: 让每位不用等!
+
 
 .. toctree::
    :maxdepth: 2

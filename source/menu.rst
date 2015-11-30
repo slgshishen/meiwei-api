@@ -13,13 +13,12 @@
 请求说明
 ^^^^^^^^^^^^^
 
-HTTP请求方式：POST
+::
 
-返回数据格式：JSON
-
-测试环境 http://test2.9now.net/api/menu/dish
-
-正式环境 http://api.9now.cn/api/menu/dish
+    HTTP请求方式：POST
+    返回数据格式：JSON
+    测试环境 http://test2.9now.net/api/menu/dish
+    正式环境 http://api.9now.cn/api/menu/dish
 
 参数说明
 ^^^^^^^^^^^^^
@@ -172,13 +171,12 @@ code     msg
 请求说明
 ^^^^^^^^^^^^^
 
-HTTP请求方式：POST
+::
 
-返回数据格式：JSON
-
-测试环境 http://test2.9now.net/api/menu/cate
-
-正式环境 http://api.9now.cn/api/menu/cate
+    HTTP请求方式：POST
+    返回数据格式：JSON
+    测试环境 http://test2.9now.net/api/menu/cate
+    正式环境 http://api.9now.cn/api/menu/cate
 
 
 参数说明
@@ -305,10 +303,12 @@ code     msg
 请求说明
 ^^^^^^^^^^^^^
 
-HTTP请求方式：POST
-返回数据格式：JSON
-厂商测试环境url
-厂商正式环境url
+::
+
+    HTTP请求方式：POST
+    返回数据格式：JSON
+    厂商测试环境url
+    厂商正式环境url
 
 
 查询订单
